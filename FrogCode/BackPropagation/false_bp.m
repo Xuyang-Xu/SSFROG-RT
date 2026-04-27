@@ -1,0 +1,1 @@
+function X = false_bp(varargin)%FALSE Logical true.%	FALSE returns a logical true.%%	See also TRUE, LOGICAL.%	$Revision: 1.1 $ $Date: 2001/08/13 22:22:13 $%%	$Log: false.m,v $%	Revision 1.1  2001/08/13 22:22:13  zeekec%	Added true and false%	X = logical(zeros(varargin{:}));
