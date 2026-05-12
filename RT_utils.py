@@ -430,6 +430,7 @@ def plot_rt_summary(
     ax.plot(tau, It_norm)
     ax2.plot(tau, phiet_rel, "--")
     ax.set_xlim(-200, 200)
+    ax2.set_ylim(-np.pi,np.pi)
     ax.set_title(f"Temporal | FWHM={FWHMt:.2f} fs")
 
     # Spectral
@@ -437,8 +438,9 @@ def plot_rt_summary(
     ax2 = ax.twinx()
     ax.plot(lam1, Iw_norm)
     ax2.plot(lam1, phiew_rel, "--")
-    ax.set_xlim(700, 900)
+    ax.set_xlim(740, 880)
     ax2.set_xlim(ax.get_xlim())
+    ax2.set_ylim(-np.pi,np.pi)
     ax.set_title(f"Spectral | FWHM={FWHMw:.2f} nm")
 
     # G vs iteration
