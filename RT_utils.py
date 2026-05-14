@@ -351,6 +351,7 @@ def plot_rt_summary(
     save_dir: str | Path | None = None,
     filename: str | None = None,
     dpi: int = 150,
+    savetxt=False
 ) -> tuple[plt.Figure, np.ndarray] | None:
     """
     Plot a 2x3 summary figure or save it to disk.
@@ -442,6 +443,24 @@ def plot_rt_summary(
     ax2.set_xlim(ax.get_xlim())
     ax2.set_ylim(-np.pi,np.pi)
     ax.set_title(f"Spectral | FWHM={FWHMw:.2f} nm")
+
+    # 1) tau vs It_norm and phiet_rel
+    temporal_data = np.column_stack((tau, It_norm, phiet_rel))
+    np.savetxt(
+        "temporal_tau_It_norm_phiet.txt",
+        temporal_data,
+        header="tau_fs It_norm phiet_rel_rad",
+        fmt="%.10e"
+    )
+
+    # 2) lam1 vs Iw_norm and phiew_rel
+    spectral_data = np.column_stack((lam1, Iw_norm, phiew_rel))
+    np.savetxt(
+        "spectral_lam_Iw_norm_phiew.txt",
+        spectral_data,
+        header="lam_nm Iw_norm phiew_rel_rad",
+        fmt="%.10e"
+    )
 
     # G vs iteration
     ax = axes[1, 2]
